@@ -26,9 +26,8 @@ html,body{height:100%;font-family:'Jost',-apple-system,sans-serif;background:#ff
 /* ── S1 미니멀 ── */
 #s1{justify-content:center;align-items:center;background:#fff;}
 .s1-min{display:flex;flex-direction:column;align-items:center;justify-content:center;width:100%;max-width:420px;padding:2rem 1.5rem;text-align:center;gap:0;}
-.s1-mirror-box{display:flex;width:240px;height:96px;border:1px solid #111;margin-bottom:3.2rem;}
-.s1-mirror-box span{flex:1;border-right:1px solid #111;}
-.s1-mirror-box span:last-child{border-right:none;}
+.s1-mirror-box{display:flex;gap:6px;width:270px;height:90px;margin-bottom:3.2rem;}
+.s1-mirror-box span{flex:1;border:1.5px solid #111;}
 .s1-min-title h1{font-family:'Jost',-apple-system,sans-serif;font-size:1.9rem;font-weight:600;letter-spacing:-.01em;line-height:1.1;color:#111;}
 .s1-min-title p{font-family:'Jost',-apple-system,sans-serif;font-size:1rem;font-weight:500;color:#111;margin-top:.1rem;margin-bottom:3.2rem;}
 .s1-pointer{background:none;border:none;cursor:pointer;padding:8px;margin-bottom:4rem;display:inline-flex;transition:transform .15s,opacity .15s;}
@@ -52,12 +51,12 @@ html,body{height:100%;font-family:'Jost',-apple-system,sans-serif;background:#ff
 /* 각 페어 = 세로 컬럼(디테일컷 위, 원본 비율 / 누끼 아래 왼쪽) */
 .pair{flex:0 0 auto;position:relative;cursor:pointer;display:flex;flex-direction:column;justify-content:flex-start;transition:opacity .15s;}
 .pair:active{opacity:.6;}
-/* 디테일컷 — 높이 = 화면 약 1/5.5, 원본 비율 유지 (가로로 안 줄임) */
-.pair-detail{height:18dvh;background:#f3f3f3;overflow:hidden;flex-shrink:0;}
-.pair-detail img{height:18dvh;width:auto;object-fit:contain;display:block;}
+/* 디테일컷 — 높이 175px, 원본 비율 유지 (가로로 안 줄임) */
+.pair-detail{height:175px;background:#f3f3f3;overflow:hidden;flex-shrink:0;}
+.pair-detail img{height:175px;width:auto;object-fit:contain;display:block;}
 /* 누끼 — 디테일컷 아래 바닥 정렬 */
-.pair-fig{flex:1;display:flex;align-items:flex-end;justify-content:flex-start;margin-top:2.4rem;min-height:20dvh;}
-.pair-fig img{height:20dvh;width:auto;object-fit:contain;display:block;}
+.pair-fig{flex:1;display:flex;align-items:flex-end;justify-content:flex-start;margin-top:3.4rem;min-height:200px;}
+.pair-fig img{max-height:260px;height:auto;width:auto;object-fit:contain;display:block;}
 .pair-fig .sil-wrap{opacity:.55;}
 /* 캡션 */
 .pair-cap{display:flex;align-items:baseline;gap:.5rem;margin-top:.7rem;flex-shrink:0;}
