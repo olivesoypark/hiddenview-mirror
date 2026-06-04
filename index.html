@@ -52,12 +52,12 @@ html,body{height:100%;font-family:'Jost',-apple-system,sans-serif;background:#ff
 /* 각 페어 = 세로 컬럼(디테일컷 위, 원본 비율 / 누끼 아래 왼쪽) */
 .pair{flex:0 0 auto;position:relative;cursor:pointer;display:flex;flex-direction:column;justify-content:flex-start;transition:opacity .15s;}
 .pair:active{opacity:.6;}
-/* 디테일컷 — 높이 기준, 원본 비율 유지 (가로로 안 줄임) */
-.pair-detail{height:175px;background:#f3f3f3;overflow:hidden;flex-shrink:0;}
-.pair-detail img{height:175px;width:auto;object-fit:contain;display:block;}
-/* 누끼 — 디테일컷 아래로 크게 떨어뜨려 바닥 정렬 (ref1) */
-.pair-fig{flex:1;display:flex;align-items:flex-end;justify-content:flex-start;margin-top:3.4rem;min-height:200px;}
-.pair-fig img{max-height:260px;height:auto;width:auto;object-fit:contain;display:block;}
+/* 디테일컷 — 높이 = 화면 약 1/5.5, 원본 비율 유지 (가로로 안 줄임) */
+.pair-detail{height:18dvh;background:#f3f3f3;overflow:hidden;flex-shrink:0;}
+.pair-detail img{height:18dvh;width:auto;object-fit:contain;display:block;}
+/* 누끼 — 디테일컷 아래 바닥 정렬 */
+.pair-fig{flex:1;display:flex;align-items:flex-end;justify-content:flex-start;margin-top:2.4rem;min-height:20dvh;}
+.pair-fig img{height:20dvh;width:auto;object-fit:contain;display:block;}
 .pair-fig .sil-wrap{opacity:.55;}
 /* 캡션 */
 .pair-cap{display:flex;align-items:baseline;gap:.5rem;margin-top:.7rem;flex-shrink:0;}
