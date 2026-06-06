@@ -332,55 +332,67 @@ function buildRow(){
 }
 
 function renderScene(i){
-  const p=people[i];
-  document.getElementById('bcName').textContent=p.name;
-  const cw=200,ch=120,mw=300,mh=100;
+  const p = people[i];
+  document.getElementById('bcName').textContent = p.name;
 
-  /* 실사 이미지가 있으면 사진, 없으면 SVG */
-  const personCardVis = p.img
-    ? `<img src="${p.img}" alt="${p.name}" style="height:${ch}px;width:auto;max-width:100%;object-fit:contain;display:block;margin:0 auto;">`
-    : personCatSvg(p,cw,ch);
+  const cw = 200;
+  const ch = 120;
 
-  const detailVis = p.detailImg
-    ? `<img src="${p.detailImg}" style="width:100%;height:100%;object-fit:cover;display:block;">`
-    : null;
+  const personImg = p.img
+    ? `<img src="${p.img}" alt="${p.name}">`
+    : personCatSvg(p, cw, ch);
 
-  document.getElementById('s3Body').innerHTML=`
-  <div class="s3-top">
-    <div class="s3-intro">
-      <p class="s3-name">${p.name}</p>
-      <p class="s3-role">${p.role}</p>
-      <p class="s3-desc">${p.desc}</p>
-    </div>
+  const detailImg = p.detailImg
+    ? `<img src="${p.detailImg}" alt="${p.name} detail">`
+    : mirrorSvg('front', p.col, cw * 2, 200);
 
-    <div class="s3-detail">
-      <div class="s3-detail-vis">${p.detailImg
-        ? `<img src="${p.detailImg}" alt="${p.name} detail">`
-        : mirrorSvg('front',p.col,cw*2,200)}</div>
-      <span class="s3-detail-lbl">Detail</span>
-    </div>
+  const objectImg = p.objImg
+    ? `<div class="story-obj"><img src="${p.objImg}" alt="${p.objEn || p.scene}"></div>`
+    : '';
 
-    <div class="s3-story">
-      <div class="story-left">
-        <div class="story-person">${p.img
-          ? `<img src="${p.img}" alt="${p.name}">`
-          : personCatSvg(p,cw,ch)}</div>
-        <div class="s3-back"><button onclick="goTo(2)" aria-label="back"><svg width="50" height="16" viewBox="0 0 50 16" fill="none" stroke="#111" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><line x1="49" y1="8" x2="2" y2="8"/><polyline points="9,2 2,8 9,14"/></svg></button></div>
+  document.getElementById('s3Body').innerHTML = `
+    <div class="s3-top">
+      <div class="s3-intro">
+        <p class="s3-name">${p.name}</p>
+        <p class="s3-role">${p.role || ''}</p>
+        <p class="s3-desc">${p.desc || ''}</p>
       </div>
-      <div class="story-right">
-        <div class="story-cap-title">${p.name.toLowerCase()}</div>
-        <div class="story-cap-text">${p.eng||''}</div>
-        <div class="story-bottom">
-          <div class="story-objwrap">
-            <div class="story-for"><span>for</span><span>${p.objEn||p.scene}</span></div>
-            ${p.objImg
-              ? `<div class="story-obj"><img src="${p.objImg}" alt="${p.objEn||p.scene}"></div>`
-              : ''}
+
+      <div class="s3-detail">
+        <div class="s3-detail-vis">${detailImg}</div>
+        <span class="s3-detail-lbl">Detail</span>
+      </div>
+
+      <div class="s3-story">
+        <div class="story-left">
+          <div class="story-person">${personImg}</div>
+          <div class="s3-back">
+            <button onclick="goTo(2)" aria-label="back">
+              <svg width="50" height="16" viewBox="0 0 50 16" fill="none" stroke="#111" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="49" y1="8" x2="2" y2="8"/>
+                <polyline points="9,2 2,8 9,14"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="story-right">
+          <div class="story-cap-title">${p.name.toLowerCase()}</div>
+          <div class="story-cap-text">${p.eng || ''}</div>
+
+          <div class="story-bottom">
+            <div class="story-objwrap">
+              <div class="story-for">
+                <span>for</span>
+                <span>${p.objEn || p.scene}</span>
+              </div>
+              ${objectImg}
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>`;
+  `;
 }
 
 document.getElementById('searchBtn').addEventListener('click',()=>goTo(2));
