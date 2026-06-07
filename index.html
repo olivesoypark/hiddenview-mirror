@@ -121,12 +121,12 @@ html,body{height:100%;font-family:'Jost',-apple-system,sans-serif;background:#ff
 .story-person.office img,
 .story-person.runner img,
 .story-person.selfie img,
-.story-person.smile img,
-.story-person.wifi img{height:100%;}
+.story-person.smile img{height:100%;}
+.story-person.wifi img{height:100%;transform: translate(10px);}
 
 /* 대지가 다른 커플/라이더는 잘리지 않게 보정 */
-.story-person.couple img{height:100%;}
-.story-person.rider img{height:100%;}
+.story-person.couple img{height:100%;transform:translateX(18px);}
+.story-person.rider img{height:100%;transform:translateX(24px);}
 .story-right{display:flex;flex-direction:column;min-height:320px;}
 .story-cap-title{font-family:'Jost',-apple-system,sans-serif;font-size:clamp(15px,4.6vw,18px);font-weight:600;color:#111;margin-bottom:.5rem;}
 .story-cap-text{font-size:clamp(10px,3vw,11.5px);color:#b3b3b3;line-height:1.65;letter-spacing:.01em;min-height:2.4em;}
