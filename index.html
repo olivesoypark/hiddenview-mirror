@@ -173,25 +173,13 @@ html,body{height:100%;font-family:'Jost',-apple-system,sans-serif;background:#ff
   margin-bottom:.85rem;
 }
 
-.hub-kicker h1{
-  font-family:'Jost',-apple-system,sans-serif;
-  font-size:1.45rem;
-  font-weight:500;
-  letter-spacing:-.01em;
-  line-height:1.1;
-  color:#111;
-  margin:0;
-}
-
 .hub-kicker p{
   font-family:'Jost',-apple-system,sans-serif;
-  font-size:.82rem;
+  font-size:clamp(1.35rem,6vw,1.7rem);
   font-weight:500;
-  letter-spacing:.02em;
-  color:#b9b9b9;
-  margin:0;
+  letter-spacing:-.02em;
+  color:#111;
 }
-
 .hub-photo-preview{
   width:min(80vw,340px);
   height:132px;
@@ -276,8 +264,9 @@ html,body{height:100%;font-family:'Jost',-apple-system,sans-serif;background:#ff
 }
 
 .hub-kicker{
-  margin-bottom:clamp(2.4rem,6vh,3.6rem);
+ margin-bottom:3.2rem;
 }
+
 
 .hub-choice{
   gap:1.1rem;
@@ -285,7 +274,7 @@ html,body{height:100%;font-family:'Jost',-apple-system,sans-serif;background:#ff
 }
 
 #photoShootBtn{
-  margin-bottom:clamp(3.2rem,8vh,4.4rem);
+  margin-bottom:4rem;
 }
 
 #scenarioBtn{
@@ -347,7 +336,6 @@ html,body{height:100%;font-family:'Jost',-apple-system,sans-serif;background:#ff
   <div class="hub-body">
     <div class="hub-inner">
       <div class="hub-kicker">
-        <h1>Hidden view</h1>
         <p>choose your perspective</p>
       </div>
       <button class="hub-choice" id="photoShootBtn" aria-label="photo shoot 보기">
