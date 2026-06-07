@@ -148,21 +148,20 @@ html,body{height:100%;font-family:'Jost',-apple-system,sans-serif;background:#ff
 .hub-body{
   flex:1;
   overflow-y:auto;
-  -webkit-overflow-scrolling:touch;
-  padding:2.35rem 1.2rem calc(env(safe-area-inset-bottom) + 2rem);
+  padding:2rem 1.2rem;
   display:flex;
+
   justify-content:center;
+  align-items:center;
 }
 
 .hub-inner{
   width:100%;
   max-width:420px;
-  margin:0 auto;
+
   display:flex;
   flex-direction:column;
-  align-items:center;
-  text-align:center;
-  gap:2.35rem;
+  justify-content:center;
 }
 
 .hub-kicker{
@@ -252,18 +251,19 @@ html,body{height:100%;font-family:'Jost',-apple-system,sans-serif;background:#ff
 
 /* S2 spacing final adjustment */
 .hub-body{
-  align-items:flex-start;
-  padding-top:clamp(2.4rem,7vh,4rem);
+  align-items:center;
+  padding-top:0;
+  padding-bottom:0;
 }
 
 .hub-inner{
   gap:0;
+  justify-content:center;
 }
 
 .hub-kicker{
- margin-bottom:3.2rem;
+  margin-bottom:2.4rem;
 }
-
 
 .hub-choice{
   gap:1.1rem;
@@ -271,7 +271,7 @@ html,body{height:100%;font-family:'Jost',-apple-system,sans-serif;background:#ff
 }
 
 #photoShootBtn{
-  margin-bottom:4rem;
+  margin-bottom:3.2rem;
 }
 
 #scenarioBtn{
@@ -291,12 +291,6 @@ html,body{height:100%;font-family:'Jost',-apple-system,sans-serif;background:#ff
 .hub-subtitle{
   margin:0;
 }
-
-.hub-person{
-  margin-top:0;
-  margin-bottom:0;
-}
-
 </style>
 </head>
 <body>
