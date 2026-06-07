@@ -266,20 +266,26 @@ html,body{height:100%;font-family:'Jost',-apple-system,sans-serif;background:#ff
 
 
 /* S2 spacing final adjustment */
+.hub-body{
+  align-items:flex-start;
+  padding-top:clamp(2.4rem,7vh,4rem);
+}
+
 .hub-inner{
   gap:0;
 }
 
 .hub-kicker{
-  margin-bottom:3rem;
+  margin-bottom:clamp(2.4rem,6vh,3.6rem);
 }
 
 .hub-choice{
-  gap:1.35rem;
+  gap:1.1rem;
+  margin:0;
 }
 
 #photoShootBtn{
-  margin-bottom:4.8rem;
+  margin-bottom:clamp(3.2rem,8vh,4.4rem);
 }
 
 #scenarioBtn{
@@ -287,6 +293,11 @@ html,body{height:100%;font-family:'Jost',-apple-system,sans-serif;background:#ff
 }
 
 .hub-photo-preview{
+  margin-bottom:0;
+}
+
+.hub-person{
+  margin-top:0;
   margin-bottom:0;
 }
 
@@ -299,6 +310,7 @@ html,body{height:100%;font-family:'Jost',-apple-system,sans-serif;background:#ff
   margin-top:0;
   margin-bottom:0;
 }
+
 </style>
 </head>
 <body>
