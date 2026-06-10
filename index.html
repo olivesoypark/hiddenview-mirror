@@ -83,7 +83,12 @@ html,body{height:100%;font-family:'Jost',-apple-system,sans-serif;background:#ff
 
 /* Rider만 크게 */
 .pcell.rider .pcell-fig img{
-  transform:scale(1.1);
+  height:153px;max-height:153px;max-width:none;width:auto;
+  transform:none;
+}
+/* Couple: 상단 여백 보정해 와이파이와 동일 높이 */
+.pcell.couple .pcell-fig img{
+  transform:scale(0.94);
   transform-origin:bottom center;
 }
 .pcell-fig .sil-wrap{opacity:.55;}
@@ -126,7 +131,7 @@ html,body{height:100%;font-family:'Jost',-apple-system,sans-serif;background:#ff
 
 /* 대지가 다른 커플/라이더는 잘리지 않게 보정 */
 .story-person.couple img{height:100%;transform:translateX(18px);}
-.story-person.rider img{height:118%;transform:translateX(22px);}
+.story-person.rider img{height:100%;transform:translateX(22px);}
 .story-right{display:flex;flex-direction:column;min-height:280px;}
 .story-cap-title{font-family:'Jost',-apple-system,sans-serif;font-size:clamp(15px,4.6vw,18px);font-weight:600;color:#111;margin-bottom:.5rem;}
 .story-cap-text{font-size:clamp(10px,3vw,11.5px);color:#b3b3b3;line-height:1.65;letter-spacing:.01em;min-height:2.4em;}
@@ -597,7 +602,7 @@ function buildRow(){
     const fig = p.img
       ? `<img src="${p.img}" alt="${p.name}">`
       : `<div class="sil-wrap">${silSvg(p.sil,p.col,138)}</div>`;
-    return `<div class="pcell" data-i="${i}">
+    return `<div class="pcell ${p.name.toLowerCase()}" data-i="${i}">
       <div class="pcell-fig">${fig}</div>
       <div class="pcell-cap"><span class="pcell-name">${p.name}</span><span class="pcell-role">${p.role}</span></div>
     </div>`;
