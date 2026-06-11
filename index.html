@@ -300,7 +300,12 @@ html,body{height:100%;font-family:'Jost',-apple-system,sans-serif;background:#ff
 
 /* 공통 하단 한 줄 (스크롤 끝) */
 .page-footer{margin-top:auto;flex-shrink:0;width:100%;text-align:center;padding-top:2rem;padding-bottom:calc(env(safe-area-inset-bottom) + 0.3rem);font-family:'Jost',-apple-system,sans-serif;font-size:.65rem;font-weight:400;letter-spacing:.03em;color:#c7c7c7;}
-#s2 .page-footer{padding-bottom:calc(env(safe-area-inset-bottom) + 1.6rem);}
+#s2 .page-footer{padding-bottom:calc(env(safe-area-inset-bottom) + 1.6rem);
+  line-height:1.6;
+}
+
+#s2 .page-footer p{margin:0;}
+#s2 .page-footer p + p{margin-top:0.9rem;}
 </style>
 </head>
 <body>
@@ -742,8 +747,19 @@ window.addEventListener('load', function(){
 
 <script>
 (function(){
-  var FH='<div class="page-footer">Toyogaguclub \u00D7 mophiq 2026</div>';
-  function add(el){ if(el && !el.querySelector(':scope > .page-footer')) el.insertAdjacentHTML('beforeend', FH); }
+  var FH=
+    '<div class="page-footer">' +
+      '<p>Toyogaguclub × mophiq 2026</p>' +
+      '<p>Choi, Hwang, Park, Park</p>' +
+      '<p>Website Design &amp; Development Park Soyeon</p>' +
+    '</div>';
+
+  function add(el){
+    if(el && !el.querySelector(':scope > .page-footer')){
+      el.insertAdjacentHTML('beforeend', FH);
+    }
+  }
+
   add(document.querySelector('#s2 .hub-body'));
 })();
 </script>
