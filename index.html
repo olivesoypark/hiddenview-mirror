@@ -26,7 +26,7 @@ html,body{height:100%;font-family:'Jost',-apple-system,sans-serif;background:#ff
 /* ── S1 미니멀 ── */
 #s1{background:#fff;}
 .s1-min{
-  flex:1;display:flex;flex-direction:column;align-items:center;
+  flex:1;overflow-y:auto;display:flex;flex-direction:column;align-items:center;
   width:100%;max-width:420px;margin:0 auto;text-align:center;
   /* 노치 + 홈 인디케이터 안전영역 포함 */
   padding:calc(env(safe-area-inset-top) + 1.5rem)
@@ -99,7 +99,7 @@ html,body{height:100%;font-family:'Jost',-apple-system,sans-serif;background:#ff
 .s3-intro{display:flex;flex-direction:column;}
 .s3-name{font-family:'Jost',-apple-system,sans-serif;font-size:clamp(2rem,9vw,2.6rem);font-weight:600;letter-spacing:-.02em;line-height:1.0;margin-bottom:.4rem;}
 .s3-role{font-size:11px;color:#bbb;letter-spacing:.02em;margin-bottom:1rem;}
-.s3-desc{font-size:clamp(13px,3.8vw,15px);color:#555;line-height:1.7;}
+.s3-desc{font-size:clamp(12px,3.2vw,13.5px);color:#8a8a8a;line-height:1.8;letter-spacing:.01em;}
 
 /* DETAIL 가로 띠 */
 .s3-detail{position:relative;width:100%;margin-top:1.4rem;background:#f0f0f0;overflow:hidden;}
@@ -289,6 +289,14 @@ html,body{height:100%;font-family:'Jost',-apple-system,sans-serif;background:#ff
 .hub-subtitle{
   margin:0;
 }
+
+/* 인트로 1페이지: 스크롤 끝 한 줄 */
+.s1-screen1{flex:0 0 auto;min-height:100%;width:100%;display:flex;flex-direction:column;align-items:center;}
+.s1-footer{flex-shrink:0;width:100%;text-align:center;margin-top:2rem;padding-bottom:calc(env(safe-area-inset-bottom) + 0.3rem);font-family:'Jost',-apple-system,sans-serif;font-size:.65rem;font-weight:400;letter-spacing:.03em;color:#c7c7c7;}
+/* 포토 상세 페이지 하단 크레딧 */
+.photo-credit{text-align:center;margin-top:2.4rem;padding-bottom:calc(env(safe-area-inset-bottom) + 0.5rem);font-family:'Jost',-apple-system,sans-serif;font-size:.65rem;font-weight:400;letter-spacing:.03em;color:#c7c7c7;line-height:1.6;}
+.photo-credit p{margin:0;}
+.photo-credit p + p{margin-top:0.9rem;}
 </style>
 </head>
 <body>
@@ -296,6 +304,7 @@ html,body{height:100%;font-family:'Jost',-apple-system,sans-serif;background:#ff
 <!-- S1 -->
 <div class="screen active" id="s1">
   <div class="s1-min">
+    <div class="s1-screen1">
     <div class="s1-center">
     <div class="s1-mirror-box">
       <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA4QAAAEoCAYAAAAADz+HAAAJOklEQVR42u3bTYoTWxiA4e9UlflpFVF0DYJ7EEQXoaBzR4IT0U04Egf+bEDcg6A0BpwIrsCJs6gTJUarTjm5VbfTabi3pSPd1c8zMkfw0In5ut6TSoqINgAAADh2qp0PUkpRlqVnBRiMnHPknP8delU1iL0AcwUYjqZpom3bv9JkO/eKiEjxzyeEKaWVvwAAAGB4drZfioi2KIrIOcelS5fiypUrkXOOlJJnCjiy2raNoihie3s7Pnz4EBERp0+fjhs3bsSJEyfWDsBSSvHr168oiqI/lfu/h2TdXrPZLN6/fx8REePxOG7evBmTycRhGwx4rpw5cyauX7++52l+Sinquu5P+/czC/aaK6PRKG7dumWuwAC9fPky5vN5RERcvHgxrl27ttZkXcTVdR1lWUZRFH80C168eBFfv37tZ00VEdEF4dWrV+PRo0deEWAwHjx40F+4XbhwIZ4+fbqxvR4+fNhfuE2n03j27FkUReFFgIG5f//+ylx58uTJX5krW1tb8fz5c4f2MECz2awPwsuXL8fjx483tte7d+/iy5cvfVCu3Ii+WCyiruuo69o96sCR1s2xxWKxsvbt27f+dP2gLqq6vX7+/NmvtW0b8/k8zp07d6B7AYdvrnz//j3G4/FG5srOvbq5cvbsWXMFBjhfOsvlMuq6jqZpNvJdwqZpVh6vVF9RFH0ICkLgqKuqauUTupRSVFUVVVUd+MVUVVVr/96m9gKOz1zZfZeBuQLDtPvW0O66YhNBuHt2uJcJAADgmBKEAAAAghAAAABBCAAAgCAEAABAEAIAACAIAQAAEIQAAAAIQgAAAAQhAAAAghAAAABBCAAAgCAEAABAEAIAACAIAQAAEIQAAAAIQgAAAAQhAAAAghAAAABBCAAAgCAEAABAEAIAACAIAQAAEIQAAAAIQgAAAEEIAACAIAQAAEAQAgAAIAgBAAAQhAAAAAhCAAAABCEAAACCEAAAAEEIAACAIAQAAEAQAgAAIAgBAAAQhAAAAAhCAAAABCEAAACCEAAAAEEIAACAIAQAAEAQAgAAIAgBAAAQhAAAAAhCAAAABCEAAIAg9BQAAAAIQgAAAAQhAAAAghAAAABBCAAAgCAEAABAEAIAACAIAQAAEIQAAAAIQgAAAAQhAAAAghAAAABBCAAAgCAEAABAEAIAACAIAQAAEIQAAAAIQgAAAAQhAAAAghAAAABBCAAAgCAEAABAEAIAACAIAQAABCEAAACCEAAAAEEIAACAIAQAAEAQAgAAIAgBAAAQhAAAAAhCAAAABCEAAACCEAAAAEEIAACAIAQAAEAQAgAAIAgBAAAQhAAAAAhCAAAABCEAAACCEAAAAEEIAACAIAQAAEAQAgAAIAgBAAAQhAAAAIIQAAAAQQgAAIAgBAAAQBACAAAgCAEAABCEAAAACEIAAAAEIQAAAIIQAAAAQQgAAIAgBAAAQBACAAAgCAEAABCEAAAACEIAAAAEIQAAAIIQAAAAQQgAAIAgBAAAQBACAAAgCAEAABCEAAAACEIAAAAEIQAAgCAEAABAEAIAACAIAQAAEIQAAAAIQgAAAAQhAAAAghAAAABBCAAAgCAEAABAEAIAACAIAQAAEIQAAAAIQgAAAAQhAAAAghAAAABBCAAAgCAEAABAEAIAACAIAQAAEIQAAAAIQgAAAAQhAAAAghAAAEAQAgAAIAgBAAAQhAAAAAhCAAAABCEAAACCEAAAAEEIAACAIAQAAEAQAgAAIAgBAAAQhAAAAAhCAAAABCEAAACCEAAAAEEIAACAIAQAAEAQAgAAIAgBAAAQhAAAAAhCAAAABCEAAACCEAAAAEEIAACAIAQAABCEAAAACEIAAAAEIQAAAIIQAAAAQQgAAIAgBAAAQBACAAAgCAEAABCEAAAACEIAAAAEIQAAAIIQAAAAQQgAAIAgBAAAQBACAAAgCAEAABCEAAAACEIAAAAEIQAAAIIQAAAAQQgAAIAgBAAAQBACAAAIQgAAAAQhAAAAghAAAABBCAAAgCAEAABAEAIAACAIAQAAEIQAAAAIQgAAAAQhAAAAghAAAABBCAAAgCAEAABAEAIAACAIAQAAEIQAAAAIQgAAAAQhAAAAghAAAABBCAAAgCAEAABAEAIAACAIAQAAEIQAAACCEAAAAEEIAACAIAQAAEAQAgAAIAgBAAAQhAAAAAhCAAAABCEAAACCEAAAAEEIAACAIAQAAEAQAgAAIAgBAAAQhAAAAAhCAAAABCEAAACCEAAAAEEIAACAIAQAAEAQAgAAIAgBAAAQhAAAAAhCAAAAQQgAAIAgBAAAQBACAAAgCAEAABCEAAAACEIAAAAEIQAAAIIQAAAAQQgAAIAgBAAAQBACAAAgCAEAABCEAAAACEIAAAAEIQAAAIIQAAAAQQgAAIAgBAAAQBACAAAgCAEAABCEAAAACEIAAAAEIQAAAIIQAABAEAIAACAIAQAAEIQAAAAIQgAAAAQhAAAAghAAAABBCAAAgCAEAABAEAIAACAIAQAAEIQAAAAIQgAAAAQhAAAAghAAAABBCAAAgCAEAABAEAIAACAIAQAAEIQAAAAIQgAAAAQhAAAAghAAAABBCAAAcJxVOx/knKOu66jr2jMDHGndHMs592tt2/Yzrm3bSCltbK9u/aD3Ag7XXOnWy7I0V4A/1rbt2vVK0zQr65vYay0Ip9NpVFUVVVV5VYAjrZtjW1tb/VpZlnHq1KmN7TUajfq1lFKcP38+isKNGDDkuVIURZw8eXJje02n07W5IgRhuPMlImI8Hm+0ycqyXA/C7vTp9evXce/evWiaxrDhSEgpxXK5jLquI+ccZVn+5//dpmmiaZqoqsrF+oDlnKMoitje3u7XPn/+HLdv346qqtZO17s7JMqy3PdJf7fX27dv+7XFYhF37tyJ6XS6kdO9w/hezDnHcrmMyWQSKaVj8XNzvLRtG2VZxqtXr/q1+Xwed+/e7efKXr+jUkoxGo329Z7o9nrz5s3aXJlMJt5fMDCfPn3q/zybzfZssu53648fP2I0GvXXK/v18ePHfs5ERKSIMFEAAPahu0gTZsBRnCs7D25XPocsisInJsCg5JxXvoOzyVvi/+ZewOGYKymltduvzBVgv3Z+X3DTc2X3dxN9QggAAHBM/QYoMBfScpsJCQAAAABJRU5ErkJggg==" alt="mirror lines"/>
@@ -309,6 +318,8 @@ html,body{height:100%;font-family:'Jost',-apple-system,sans-serif;background:#ff
     </button>
     </div>
     <div class="s1-credit">C, H, P, P</div>
+    </div>
+    <div class="s1-footer">Toyogaguclub × mophiq 2026</div>
   </div>
 </div>
 <!-- S2: 선택 허브 -->
@@ -347,17 +358,21 @@ html,body{height:100%;font-family:'Jost',-apple-system,sans-serif;background:#ff
     <div class="nav-r">
       <div class="breadcrumb">
         <span data-go="1">거울 소개</span><span class="sep">›</span>
-        <span data-go="2">선택</span><span class="sep">›</span><span class="cur">photo shoot</span>
+        <span data-go="2">선택</span><span class="sep">›</span><span class="cur">Product photos</span>
       </div>
       <button class="nav-btn" id="backPhoto">←</button>
     </div>
   </div>
   <div class="gallery-body" id="galleryBody">
     <div class="gallery-head">
-      <h2>photo shoot</h2>
-      <p>제품 실사 사진을 아래로 스크롤해 볼 수 있습니다.</p>
+      <h2>Product photos</h2>
     </div>
     <div class="gallery-list" id="galleryList"></div>
+    <div class="photo-credit">
+      <p>Toyogaguclub × mophiq 2026</p>
+      <p>Choi, Hwang, Park, Park</p>
+      <p>Website Design &amp; Development Park Soyeon</p>
+    </div>
   </div>
 </div>
 
