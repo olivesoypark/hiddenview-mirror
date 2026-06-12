@@ -908,6 +908,68 @@ html,body{height:100%;font-family:'Jost',-apple-system,sans-serif;background:#ff
   display:block !important;
 }
 
+
+
+/* ─────────────────────────────────────────────
+   FINAL STORY-FOR UNIFICATION
+   Fix duplicated CSS overrides so every user detail page
+   uses identical preposition+noun typography + position.
+───────────────────────────────────────────── */
+
+/* User detail story area: one consistent vertical position */
+.s3-story{
+  margin-top:2.65rem !important;
+}
+
+/* Match name + preposition/noun type exactly */
+.story-cap-title,
+.story-for,
+.story-for span{
+  font-family:'Jost',-apple-system,sans-serif !important;
+  font-size:16px !important;
+  font-weight:500 !important;
+  letter-spacing:0 !important;
+  line-height:1.05 !important;
+  color:#111 !important;
+  text-transform:none !important;
+  font-style:normal !important;
+}
+
+/* Force same layout for all preposition+noun blocks */
+.story-for{
+  text-align:left !important;
+  margin-right:clamp(12px,5vw,28px) !important;
+  padding:0 !important;
+}
+
+.story-for span{
+  display:block !important;
+  margin:0 !important;
+  padding:0 !important;
+}
+
+/* Remove any previous optical spacing tweaks */
+.story-for span:first-child{
+  margin-bottom:0 !important;
+}
+
+
+
+/* ─────────────────────────────────────────────
+   LOWER USER DETAIL STORY AREA
+   Reduce empty space under the feet by moving the
+   entire person + name + preposition+noun block down.
+───────────────────────────────────────────── */
+
+.s3-story{
+    margin-top:3.15rem !important;
+}
+
+/* Slightly reduce the bottom padding of the detail page */
+.s3-top{
+    padding-bottom:calc(env(safe-area-inset-bottom) + 1.1rem) !important;
+}
+
 </style>
 </head>
 <body>
