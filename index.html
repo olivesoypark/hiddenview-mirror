@@ -77,7 +77,7 @@ html,body{height:100%;font-family:'Jost',-apple-system,sans-serif;background:#ff
 /* 크레딧: 항상 하단 고정 */
 .s1-credit{flex-shrink:0;font-family:'Jost',-apple-system,sans-serif;font-size:.65rem;font-weight:400;color:#c7c7c7;letter-spacing:.03em;line-height:1.6;}
 
-/* ── S-Intro: 전환용 텍스트 화면 (3초 후 자동 전환) ── */
+/* ── S-Intro: 전환용 텍스트 화면 (2.5초 후 자동 전환) ── */
 #sIntro{background:#fff;}
 .intro-body{flex:1;display:flex;align-items:center;justify-content:center;padding:2rem;text-align:center;}
 .intro-text{font-family:'Jost',-apple-system,sans-serif;font-size:20px;font-weight:300;letter-spacing:.2em;line-height:1.6;color:#111;animation:introFade 1.1s ease both;}
@@ -375,6 +375,320 @@ html,body{height:100%;font-family:'Jost',-apple-system,sans-serif;background:#ff
 
 #s2 .page-footer p{margin:0;}
 #s2 .page-footer p + p{margin-top:0.9rem;}
+
+
+/* ─────────────────────────────────────────────
+   MOTION RESET — ONLY INTRO FLOW ANIMATES
+   Animated:
+   1. S1 → Choose your perspective
+   2. Choose your perspective → Photo/User Scenario selection
+   Everything after that: no page/internal animation.
+───────────────────────────────────────────── */
+
+/* Default: no transitions/animations for all screens */
+.screen,
+.screen.active{
+  transition:none !important;
+}
+
+/* Only intro flow screens keep the soft fade */
+#s1,
+#s1.active,
+#sIntro,
+#sIntro.active,
+#sHub,
+#sHub.active,
+#hub,
+#hub.active,
+#s2Hub,
+#s2Hub.active{
+  transition:opacity .32s ease !important;
+}
+
+/* Keep intro text animation only */
+.intro-text{
+  animation:introFade 1.1s ease both !important;
+}
+
+/* Keep S1 pointer nudge only */
+.s1-pointer img{
+  animation:s1Nudge 1.8s ease-in-out infinite !important;
+}
+
+/* Remove animations/transitions after the selection page */
+#s2,
+#s2.active,
+#gallery,
+#gallery.active,
+#photoGallery,
+#photoGallery.active,
+#galleryScreen,
+#galleryScreen.active,
+#photoScreen,
+#photoScreen.active,
+#s3,
+#s3.active,
+[id^="s3"],
+[id^="s3"].active{
+  transition:none !important;
+}
+
+/* Remove internal entrance animations in all post-selection pages */
+#s2 *,
+#gallery *,
+#photoGallery *,
+#galleryScreen *,
+#photoScreen *,
+#s3 *,
+[id^="s3"] *{
+  animation:none !important;
+}
+
+/* Tap feedback only, no movement */
+.hub-choice,
+.pcell,
+.gallery-back button,
+.s3-back button{
+  transition:opacity .08s linear !important;
+}
+
+.hub-choice:active,
+.pcell:active,
+.gallery-back button:active,
+.s3-back button:active{
+  opacity:.55;
+  transform:none !important;
+}
+
+@media (prefers-reduced-motion:reduce){
+  #s1,
+  #s1.active,
+  #sIntro,
+  #sIntro.active,
+  #sHub,
+  #sHub.active,
+  #hub,
+  #hub.active,
+  #s2Hub,
+  #s2Hub.active,
+  .intro-text,
+  .s1-pointer img{
+    transition:none !important;
+    animation:none !important;
+  }
+}
+
+
+
+/* ─────────────────────────────────────────────
+   CHOOSE YOUR PERSPECTIVE EXIT MOTION
+   Appears softly, then disappears softly before S2.
+───────────────────────────────────────────── */
+
+#sIntro.intro-leaving .intro-text{
+  animation:introTextLeave .42s ease both !important;
+}
+
+@keyframes introTextLeave{
+  from{
+    opacity:1;
+    transform:translateY(0);
+  }
+  to{
+    opacity:0;
+    transform:translateY(-8px);
+  }
+}
+
+
+
+/* ─────────────────────────────────────────────
+   FINAL TYPOGRAPHY REFINEMENT
+   Quiet, editorial, consistent
+───────────────────────────────────────────── */
+
+/* Navigation */
+.nav-logo{
+  font-size:.92rem !important;
+  font-weight:300 !important;
+  letter-spacing:.08em !important;
+}
+
+.breadcrumb{
+  font-size:9px !important;
+  letter-spacing:.08em !important;
+}
+
+/* Intro */
+.intro-text{
+  font-size:18px !important;
+  letter-spacing:.16em !important;
+  font-weight:300 !important;
+}
+
+/* S1 */
+.s1-min-title h1{
+  font-size:clamp(1.8rem,8vw,2rem) !important;
+  font-weight:600 !important;
+}
+
+.s1-min-title p{
+  font-size:.95rem !important;
+  font-weight:400 !important;
+}
+
+/* Photo / User Scenario */
+.hub-title,
+.hub-subtitle{
+  font-size:1.42rem !important;
+  font-weight:500 !important;
+}
+
+/* Section titles */
+.s2-head h2,
+.gallery-head h2{
+  font-size:1.5rem !important;
+  font-weight:600 !important;
+}
+
+.s2-head p,
+.gallery-head p{
+  font-size:11px !important;
+  line-height:1.65 !important;
+}
+
+/* Scenario labels */
+.pcell-name{
+  font-size:10px !important;
+  font-weight:500 !important;
+  letter-spacing:.05em !important;
+  text-transform:uppercase !important;
+}
+
+/* User detail pages */
+.s3-name{
+  font-size:clamp(2rem,9vw,2.4rem) !important;
+  font-weight:600 !important;
+}
+
+.s3-desc,
+.story-cap-text{
+  font-size:11px !important;
+  line-height:1.7 !important;
+}
+
+.story-cap-title,
+.story-for{
+  font-size:16px !important;
+  font-weight:500 !important;
+}
+
+/* Credits */
+.page-footer,
+.s1-credit,
+.photo-credit{
+  font-size:.65rem !important;
+  line-height:1.6 !important;
+}
+
+
+
+/* ─────────────────────────────────────────────
+   FIXED INTRO EXIT FADE
+   choose your perspective fades out before 02 appears
+───────────────────────────────────────────── */
+
+#sIntro.intro-leaving .intro-text{
+  animation:introTextLeaveFixed .42s ease both !important;
+}
+
+@keyframes introTextLeaveFixed{
+  0%{
+    opacity:1;
+    transform:translateY(0);
+  }
+  100%{
+    opacity:0;
+    transform:translateY(-10px);
+  }
+}
+
+
+
+/* ─────────────────────────────────────────────
+   INTRO PAGE SAME-IN / SAME-OUT MOTION
+   The whole choose-your-perspective page exits with the
+   same motion language as it enters.
+───────────────────────────────────────────── */
+
+#sIntro .intro-body{
+  animation:introPageIn .42s ease both !important;
+}
+
+#sIntro.intro-leaving .intro-body{
+  animation:introPageOut .42s ease both !important;
+}
+
+/* Disable separate text-only exit so the page moves as one layer */
+#sIntro.intro-leaving .intro-text{
+  animation:none !important;
+}
+
+@keyframes introPageIn{
+  from{
+    opacity:0;
+    transform:translateY(10px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+@keyframes introPageOut{
+  from{
+    opacity:1;
+    transform:translateY(0);
+  }
+  to{
+    opacity:0;
+    transform:translateY(10px);
+  }
+}
+
+
+
+/* ─────────────────────────────────────────────
+   FINAL INTRO PAGE-ONLY MOTION
+   No animation on the text itself.
+   The whole choose-your-perspective screen fades as one page.
+───────────────────────────────────────────── */
+
+/* Kill any text/body intro animations */
+#sIntro .intro-text,
+#sIntro .intro-body,
+#sIntro.intro-leaving .intro-text,
+#sIntro.intro-leaving .intro-body{
+  animation:none !important;
+  transform:none !important;
+}
+
+/* Animate the page layer itself */
+#sIntro{
+  opacity:0;
+  transition:opacity .42s ease !important;
+}
+
+#sIntro.active{
+  opacity:1;
+  transition:opacity .42s ease !important;
+}
+
+#sIntro.active.intro-leaving{
+  opacity:0 !important;
+  transition:opacity .42s ease !important;
+}
+
 </style>
 </head>
 <body>
@@ -488,12 +802,27 @@ html,body{height:100%;font-family:'Jost',-apple-system,sans-serif;background:#ff
   <div class="s3-body" id="s3Body"></div>
 </div>
 
-<!-- S-Intro: choose your perspective (S1 다음, 3초 후 자동으로 S2 전환) -->
+<!-- S-Intro: choose your perspective (S1 다음, 2.5초 후 자동으로 S2 전환) -->
 <div class="screen" id="sIntro">
   <div class="intro-body">
     <p class="intro-text">choose your perspective</p>
   </div>
 </div>
+
+
+<script>
+/* Smooth exit for choose-your-perspective screen */
+function goFromIntroToHubSmooth(){
+  const intro = document.getElementById('sIntro');
+  if(intro) intro.classList.add('intro-leaving');
+  setTimeout(() => {
+    if(typeof showScreen === 'function'){
+      showScreen('s2');
+    }
+    if(intro) intro.classList.remove('intro-leaving');
+  }, 420);
+}
+</script>
 
 <script>
 const photo01 = "images/photo01.jpg";
@@ -662,10 +991,24 @@ function goTo(n){
   if(n===5) document.getElementById('s3Body').scrollTop=0;
 
   clearTimeout(introTimer);
+
+  const introEl = document.getElementById('sIntro');
+  if(introEl && n!==6) introEl.classList.remove('intro-leaving');
+
   if(n===6){
+    if(introEl) introEl.classList.remove('intro-leaving');
+
     introTimer=setTimeout(function(){
-      if(document.getElementById('sIntro').classList.contains('active')) goTo(2);
-    },2000);
+      const intro = document.getElementById('sIntro');
+      if(intro && intro.classList.contains('active')){
+        intro.classList.add('intro-leaving');
+
+        setTimeout(function(){
+          if(intro.classList.contains('active')) goTo(2);
+          intro.classList.remove('intro-leaving');
+        },420);
+      }
+    },2080);
   }
 }
 
