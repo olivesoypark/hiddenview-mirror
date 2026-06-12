@@ -12,18 +12,21 @@ html,body{height:100%;font-family:'Jost',-apple-system,sans-serif;background:#ff
   position:fixed;top:0;left:0;right:0;
   height:100dvh;
   display:flex;flex-direction:column;overflow:hidden;
+  background:#fff;
   opacity:0;
-  transition:opacity var(--screen-dur,.12s) ease, visibility 0s linear var(--screen-dur,.2s);
-  pointer-events:none;
   visibility:hidden;
+  pointer-events:none;
   z-index:0;
+  /* 비활성화(나가는 화면): 잔상 없이 즉시 숨김 */
+  transition:opacity 0s, visibility 0s;
 }
 .screen.active{
   opacity:1;
-  pointer-events:auto;
   visibility:visible;
-  transition:opacity var(--screen-dur,.2s) ease, visibility 0s;
+  pointer-events:auto;
   z-index:1;
+  /* 활성화(들어오는 화면): 흰 배경 위로 부드럽게 페이드인 */
+  transition:opacity .3s ease;
 }
 
 /* NAV */
@@ -193,10 +196,10 @@ html,body{height:100%;font-family:'Jost',-apple-system,sans-serif;background:#ff
 .story-person.couple img{height:100%;transform:translateX(-8px);}
 .story-person.rider img{height:100%;transform:translateX(-18px);}
 .story-right{display:flex;flex-direction:column;min-height:280px;}
-.story-cap-title{font-family:'Jost',-apple-system,sans-serif;font-size:clamp(15px,4.6vw,18px);font-weight:600;letter-spacing:-.02em;line-height:1.0;color:#111;margin-bottom:.5rem;}
+.story-cap-title{font-family:'Jost',-apple-system,sans-serif;font-size:clamp(15px,4.6vw,18px);font-weight:600;line-height:1.0;color:#111;margin-bottom:.5rem;}
 .story-cap-text{font-size:clamp(10px,3vw,11.5px);color:#b3b3b3;line-height:1.65;letter-spacing:.01em;min-height:2.4em;}
 .story-bottom{margin-top:auto;padding-top:2.5rem;display:flex;flex-direction:column;align-items:flex-end;}
-.story-for{font-family:'Jost',-apple-system,sans-serif;font-size:clamp(15px,4.6vw,18px);font-weight:600;color:#111;line-height:1.45;text-align:left;margin-right:clamp(12px,5vw,28px);}
+.story-for{font-family:'Jost',-apple-system,sans-serif;font-size:clamp(15px,4.6vw,18px);font-weight:600;color:#111;line-height:1.2;text-align:left;margin-right:clamp(12px,5vw,28px);}
 .story-for span{display:block;}
 .story-objwrap{display:flex;flex-direction:column;align-items:flex-end;width:100%;transform:translateY(-0.3rem);}
 .story-obj{width:100%;height:54px;margin-top:1.2rem;display:flex;align-items:flex-start;justify-content:center;}
@@ -650,26 +653,7 @@ function mirrorSvg(angle,col,w,h){
 }
 
 let introTimer=null;
-let curScreen=1;
 function goTo(n){
-  // S1→choose, choose→허브 두 전환만 0.4s, 나머지는 0s(즉시)
-let dur='0s';
-
-/* 인트로 구간만 부드럽게 */
-if((curScreen===1 && n===6) || (curScreen===6 && n===2)){
-  dur='.35s';
-}
-
-/* 선택 → 상세 진입만 아주 짧은 페이드 */
-if(curScreen===2 && (n===3 || n===4)){
-  dur='.12s';
-}
-
-/* 유저 시나리오 → 유저 상세 */
-if(curScreen===4 && n===5){
-  dur='.12s';
-}  curScreen=n;
-
   document.querySelectorAll('.screen').forEach((s,i)=>s.classList.toggle('active',i===n-1));
 
   // 페이지 전환 시 스크롤 위치 초기화
