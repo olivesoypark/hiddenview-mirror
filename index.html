@@ -697,6 +697,53 @@ html,body{height:100%;font-family:'Jost',-apple-system,sans-serif;background:#ff
     display:none !important;
 }
 
+
+
+/* ─────────────────────────────────────────────
+   GOD TOUCH — QUIET NUMBERING ON SELECTION PAGE
+   Adds subtle editorial numbering to Photo / User Scenario.
+   Structure remains unchanged.
+───────────────────────────────────────────── */
+
+/* Make the two choices feel like exhibition entries */
+#photoShootBtn .hub-title,
+#scenarioBtn .hub-subtitle{
+  display:flex !important;
+  flex-direction:column !important;
+  align-items:center !important;
+  gap:7px !important;
+}
+
+/* Tiny catalogue numbers under each title */
+#photoShootBtn .hub-title::after{
+  content:"01";
+  font-size:8.5px;
+  font-weight:300;
+  letter-spacing:.18em;
+  color:#c9c9c9;
+  line-height:1;
+}
+
+#scenarioBtn .hub-subtitle::after{
+  content:"02";
+  font-size:8.5px;
+  font-weight:300;
+  letter-spacing:.18em;
+  color:#c9c9c9;
+  line-height:1;
+}
+
+/* Give the selection screen a little more air */
+#photoShootBtn{
+  margin-bottom:3.55rem !important;
+}
+
+/* Keep it silent on tap */
+#photoShootBtn:active .hub-title::after,
+#scenarioBtn:active .hub-subtitle::after{
+  color:#b0b0b0;
+}
+
 </style>
 </head>
 <body>
