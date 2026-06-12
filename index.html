@@ -744,6 +744,140 @@ html,body{height:100%;font-family:'Jost',-apple-system,sans-serif;background:#ff
   color:#b0b0b0;
 }
 
+
+
+/* ─────────────────────────────────────────────
+   FINAL USER DETAIL TYPE MATCH
+   Make bottom preposition + noun match the name style
+   on the right side of each user detail page.
+───────────────────────────────────────────── */
+
+.story-cap-title,
+.story-for{
+  font-family:'Jost',-apple-system,sans-serif !important;
+  font-size:16px !important;
+  font-weight:500 !important;
+  letter-spacing:0 !important;
+  line-height:1.05 !important;
+  color:#111 !important;
+}
+
+/* Keep the stacked layout, but remove the awkward tight/loose feeling */
+.story-for{
+  text-align:left !important;
+}
+
+.story-for span{
+  display:block !important;
+  letter-spacing:0 !important;
+  line-height:1.05 !important;
+}
+
+
+
+/* ─────────────────────────────────────────────
+   FINAL FINAL STORY-FOR OPTICAL BALANCE
+   Same font size as user name,
+   but visually smaller through tighter leading.
+───────────────────────────────────────────── */
+
+.story-for{
+    font-family:'Jost',-apple-system,sans-serif !important;
+    font-size:16px !important;
+    font-weight:500 !important;
+    line-height:.88 !important;
+    letter-spacing:0 !important;
+    color:#111 !important;
+}
+
+.story-for span{
+    display:block !important;
+    line-height:.88 !important;
+    letter-spacing:-0.01em !important;
+}
+
+
+
+/* Restore story-for to match name exactly */
+.story-for,
+.story-for span{
+    font-family:'Jost',-apple-system,sans-serif !important;
+    font-size:16px !important;
+    font-weight:500 !important;
+    line-height:1.05 !important;
+    letter-spacing:0 !important;
+    color:#111 !important;
+}
+
+
+
+/* ─────────────────────────────────────────────
+   HUB VISUAL BALANCE FIX
+   1. Match image → title spacing between Photo and User Scenario
+   2. Move the whole Photo~02 selection group to optical center
+───────────────────────────────────────────── */
+
+/* 전체 선택 그룹 무게중심: 살짝 아래로 내려서 화면 중앙에 맞춤 */
+.hub-inner{
+    justify-content:center !important;
+    transform:translateY(22px) !important;
+}
+
+/* 선택 페이지의 두 블록 간격 정돈 */
+#photoShootBtn{
+    gap:1.45rem !important;
+    margin-bottom:3.25rem !important;
+}
+
+#scenarioBtn{
+    gap:1.45rem !important;
+}
+
+/* Photo 이미지와 사람 누끼의 기준 높이를 조금 더 통일 */
+.hub-photo-preview{
+    height:126px !important;
+    margin-bottom:0 !important;
+}
+
+.hub-person{
+    height:146px !important;
+    margin-bottom:0 !important;
+}
+
+/* 01 / 02 숫자와 제목 사이 간격도 동일하게 */
+#photoShootBtn .hub-title,
+#scenarioBtn .hub-subtitle{
+    gap:7px !important;
+}
+
+
+
+/* ─────────────────────────────────────────────
+   USER SCENARIO FOOTER
+   Placed only after the last row: Smile / Office / Runner.
+───────────────────────────────────────────── */
+
+.scenario-credit{
+  width:100%;
+  text-align:center;
+  margin-top:92px;
+  padding-bottom:calc(env(safe-area-inset-bottom) + 2.4rem);
+  font-family:'Jost',-apple-system,sans-serif;
+  font-size:.65rem;
+  font-weight:400;
+  letter-spacing:.03em;
+  line-height:1.6;
+  color:#c7c7c7;
+}
+
+.scenario-credit p{
+  margin:0;
+}
+
+.scenario-credit p + p{
+  margin-top:.9rem;
+}
+
 </style>
 </head>
 <body>
@@ -837,6 +971,11 @@ html,body{height:100%;font-family:'Jost',-apple-system,sans-serif;background:#ff
       <p>Nine ways of seeing Hidden View.</p>
     </div>
     <div class="pair-list" id="pairList"></div>
+    <div class="scenario-credit">
+      <p>Toyogaguclub × mophiq 2026</p>
+      <p>Choi, Hwang, Park, Park</p>
+      <p>Website Design &amp; Development Park Soyeon</p>
+    </div>
   </div>
 </div>
 
