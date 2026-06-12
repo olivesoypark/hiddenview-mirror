@@ -13,18 +13,16 @@ html,body{height:100%;font-family:'Jost',-apple-system,sans-serif;background:#ff
   height:100dvh;
   display:flex;flex-direction:column;overflow:hidden;
   opacity:0;
-  transform:translateY(20px);
-  transition:opacity .55s ease, transform .55s ease, visibility 0s linear .55s;
+  transition:opacity var(--screen-dur,.2s) ease, visibility 0s linear var(--screen-dur,.2s);
   pointer-events:none;
   visibility:hidden;
   z-index:0;
 }
 .screen.active{
   opacity:1;
-  transform:translateY(0);
   pointer-events:auto;
   visibility:visible;
-  transition:opacity .55s ease, transform .55s ease, visibility 0s;
+  transition:opacity var(--screen-dur,.2s) ease, visibility 0s;
   z-index:1;
 }
 
@@ -652,10 +650,21 @@ function mirrorSvg(angle,col,w,h){
 }
 
 let introTimer=null;
+let curScreen=1;
 function goTo(n){
+  // S1→choose, choose→허브 두 전환만 0.4s, 나머지는 0s(즉시)
+  let dur='0s';
+  if((curScreen===1 && n===6) || (curScreen===6 && n===2)) dur='.4s';
+  document.documentElement.style.setProperty('--screen-dur',dur);
+  curScreen=n;
+
   document.querySelectorAll('.screen').forEach((s,i)=>s.classList.toggle('active',i===n-1));
+
+  // 페이지 전환 시 스크롤 위치 초기화
+  window.scrollTo({top:0,behavior:'instant'});
   if(n===3) document.getElementById('galleryBody').scrollTop=0;
   if(n===5) document.getElementById('s3Body').scrollTop=0;
+
   clearTimeout(introTimer);
   if(n===6){
     introTimer=setTimeout(function(){
