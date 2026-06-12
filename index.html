@@ -380,8 +380,8 @@ html,body{height:100%;font-family:'Jost',-apple-system,sans-serif;background:#ff
 /* ─────────────────────────────────────────────
    MOTION RESET — ONLY INTRO FLOW ANIMATES
    Animated:
-   1. S1 → What's your view?
-   2. What's your view? → Photo/User Scenario selection
+   1. S1 → Find your view
+   2. Find your view → Photo/User Scenario selection
    Everything after that: no page/internal animation.
 ───────────────────────────────────────────── */
 
@@ -595,7 +595,7 @@ html,body{height:100%;font-family:'Jost',-apple-system,sans-serif;background:#ff
 
 /* ─────────────────────────────────────────────
    FIXED INTRO EXIT FADE
-   What's your view? fades out before 02 appears
+   Find your view fades out before 02 appears
 ───────────────────────────────────────────── */
 
 #sIntro.intro-leaving .intro-text{
@@ -970,6 +970,103 @@ html,body{height:100%;font-family:'Jost',-apple-system,sans-serif;background:#ff
     padding-bottom:calc(env(safe-area-inset-bottom) + 1.1rem) !important;
 }
 
+
+
+/* ─────────────────────────────────────────────
+   FINAL LOCK
+   Keeps final decisions stable.
+───────────────────────────────────────────── */
+
+/* Final intro phrase is page-layer motion only */
+#sIntro .intro-text,
+#sIntro .intro-body,
+#sIntro.intro-leaving .intro-text,
+#sIntro.intro-leaving .intro-body{
+  animation:none !important;
+  transform:none !important;
+}
+
+#sIntro{
+  opacity:0;
+  transition:opacity .42s ease !important;
+}
+
+#sIntro.active{
+  opacity:1;
+  transition:opacity .42s ease !important;
+}
+
+#sIntro.active.intro-leaving{
+  opacity:0 !important;
+  transition:opacity .42s ease !important;
+}
+
+/* DETAIL label remains removed */
+.s3-detail-lbl,
+.detail-label{
+  display:none !important;
+}
+
+/* User detail story area final position */
+.s3-story{
+  margin-top:3.15rem !important;
+}
+
+.s3-top{
+  padding-bottom:calc(env(safe-area-inset-bottom) + 1.1rem) !important;
+}
+
+/* User detail preposition+noun unified */
+.story-cap-title,
+.story-for,
+.story-for span{
+  font-family:'Jost',-apple-system,sans-serif !important;
+  font-size:16px !important;
+  font-weight:500 !important;
+  letter-spacing:0 !important;
+  line-height:1.05 !important;
+  color:#111 !important;
+  text-transform:none !important;
+  font-style:normal !important;
+}
+
+.story-for{
+  text-align:left !important;
+  margin-right:clamp(12px,5vw,28px) !important;
+  padding:0 !important;
+}
+
+.story-for span{
+  display:block !important;
+  margin:0 !important;
+  padding:0 !important;
+}
+
+/* Selection page optical balance */
+.hub-inner{
+  justify-content:center !important;
+  transform:translateY(22px) !important;
+}
+
+#photoShootBtn{
+  gap:1.45rem !important;
+  margin-bottom:3.25rem !important;
+}
+
+#scenarioBtn{
+  gap:1.45rem !important;
+}
+
+.hub-photo-preview{
+  height:126px !important;
+  margin-bottom:0 !important;
+}
+
+.hub-person{
+  height:146px !important;
+  margin-bottom:0 !important;
+}
+
 </style>
 </head>
 <body>
@@ -1088,10 +1185,10 @@ html,body{height:100%;font-family:'Jost',-apple-system,sans-serif;background:#ff
   <div class="s3-body" id="s3Body"></div>
 </div>
 
-<!-- S-Intro: What's your view? (S1 다음, 2.5초 후 자동으로 S2 전환) -->
+<!-- S-Intro: Find your view (S1 다음, 2.5초 후 자동으로 S2 전환) -->
 <div class="screen" id="sIntro">
   <div class="intro-body">
-    <p class="intro-text">What's your view?</p>
+    <p class="intro-text">Find your view</p>
   </div>
 </div>
 
