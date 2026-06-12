@@ -878,6 +878,36 @@ html,body{height:100%;font-family:'Jost',-apple-system,sans-serif;background:#ff
   margin-top:.9rem;
 }
 
+
+
+/* ─────────────────────────────────────────────
+   USER DETAIL SPACING + TYPE FIX
+   1. Move person / text / object area slightly down
+   2. Match preposition+noun typography exactly to user name
+───────────────────────────────────────────── */
+
+/* 디테일컷 아래 스토리 영역을 아주 조금만 아래로 */
+.s3-story{
+  margin-top:2.65rem !important;
+}
+
+/* 사람 오른쪽 이름과 하단 전치사+명사 스타일 완전 동일 */
+.story-cap-title,
+.story-for,
+.story-for span{
+  font-family:'Jost',-apple-system,sans-serif !important;
+  font-size:16px !important;
+  font-weight:500 !important;
+  letter-spacing:0 !important;
+  line-height:1.05 !important;
+  color:#111 !important;
+}
+
+/* 전치사+명사는 기존처럼 두 줄 유지 */
+.story-for span{
+  display:block !important;
+}
+
 </style>
 </head>
 <body>
@@ -1011,7 +1041,8 @@ function goFromIntroToHubSmooth(){
   if(intro) intro.classList.add('intro-leaving');
   setTimeout(() => {
     if(typeof showScreen === 'function'){
-      showScreen('s2');
+      resetAllScrollPositions();
+showScreen('s2');
     }
     if(intro) intro.classList.remove('intro-leaving');
   }, 420);
@@ -1177,6 +1208,7 @@ function mirrorSvg(angle,col,w,h){
 
 let introTimer=null;
 function goTo(n){
+  resetAllScrollPositions();
   document.querySelectorAll('.screen').forEach((s,i)=>s.classList.toggle('active',i===n-1));
 
   // 페이지 전환 시 스크롤 위치 초기화
@@ -1383,5 +1415,16 @@ window.addEventListener('load', function(){
   add(document.querySelector('#s2 .hub-body'));
 })();
 </script>
+
+<script>
+/* Reset scroll position whenever changing pages */
+function resetAllScrollPositions(){
+  document.querySelectorAll('.s2-body, .gallery-body, .s3-body').forEach(el=>{
+    el.scrollTop = 0;
+  });
+  window.scrollTo(0,0);
+}
+</script>
+
 </body>
 </html>
